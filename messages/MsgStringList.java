@@ -1,4 +1,4 @@
-package messages;
+package fourword_shared.fourword_shared.messages;
 
 import java.util.ArrayList;
 import java.util.List;

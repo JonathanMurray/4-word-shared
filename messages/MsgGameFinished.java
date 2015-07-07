@@ -1,6 +1,6 @@
-package messages;
+package fourword_shared.fourword_shared.messages;
 
-import model.GameResult;
+import fourword_shared.model.GameResult;
 
 /**
  * Created by jonathan on 2015-06-26.

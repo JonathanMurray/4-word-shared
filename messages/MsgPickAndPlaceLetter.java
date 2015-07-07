@@ -1,4 +1,4 @@
-package fourword_shared.fourword_shared.messages;
+package fourword_shared.messages;
 
 import fourword_shared.model.Cell;
 

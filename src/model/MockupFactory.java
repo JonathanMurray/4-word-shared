@@ -1,4 +1,4 @@
-package fourword_shared.model;
+package model;
 
 import java.util.HashMap;
 import java.util.HashSet;

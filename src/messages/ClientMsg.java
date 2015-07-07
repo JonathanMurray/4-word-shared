@@ -1,9 +1,9 @@
-package fourword_shared.messages;
+package messages;
 
 /**
  * Created by jonathan on 2015-06-27.
  */
-public enum ClientMsg implements fourword_shared.messages.MsgType {
+public enum ClientMsg implements MsgType {
 
     LOGIN,
     LOGOUT,

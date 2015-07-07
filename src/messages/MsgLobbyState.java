@@ -1,6 +1,6 @@
-package fourword_shared.messages;
+package messages;
 
-import fourword_shared.model.Lobby;
+import model.Lobby;
 
 /**
  * Created by jonathan on 2015-06-26.

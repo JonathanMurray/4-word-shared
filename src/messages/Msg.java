@@ -1,11 +1,11 @@
-package fourword_shared.messages;
+package messages;
 
 import java.io.Serializable;
 
 /**
  * Created by jonathan on 2015-06-23.
  */
-public class Msg<T extends fourword_shared.messages.MsgType> implements Serializable{
+public class Msg<T extends MsgType> implements Serializable{
 
     private int id;
     private final T type;

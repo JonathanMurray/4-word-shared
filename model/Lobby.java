@@ -9,6 +9,9 @@ import java.util.List;
  * Created by jonathan on 2015-06-27.
  */
 public class Lobby implements Serializable{
+
+    public static final long serialVersionUID = 1L;
+
     private String hostingPlayer;
     private HashMap<String, LobbyPlayer> players = new HashMap();
     private ArrayList<String> sortedNames = new ArrayList();

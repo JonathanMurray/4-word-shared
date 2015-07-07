@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class Msg<T extends MsgType> implements Serializable{
 
+    public static final long serialVersionUID = 1L;
+
     private int id;
     private final T type;
 

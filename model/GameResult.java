@@ -8,6 +8,9 @@ import java.util.HashSet;
  * Created by jonathan on 2015-06-24.
  */
 public class GameResult implements Serializable{
+
+    public static final long serialVersionUID = 1L;
+
     private HashMap<String, GridModel> grids;
     private HashSet<String> lowerWords;
 

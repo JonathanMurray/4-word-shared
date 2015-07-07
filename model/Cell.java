@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Created by jonathan on 2015-06-22.
  */
 public class Cell implements Serializable {
+
+    public static final long serialVersionUID = 1L;
+
     private int x;
     private int y;
     public Cell(int x, int y){

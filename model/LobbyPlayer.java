@@ -6,6 +6,9 @@ import java.io.Serializable;
  * Created by jonathan on 2015-06-27.
  */
 public class LobbyPlayer implements Serializable, Cloneable {
+
+    public static final long serialVersionUID = 1L;
+
     final public String name;
     final public boolean isHuman;
     public boolean hasConnected;

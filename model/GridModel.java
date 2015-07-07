@@ -8,6 +8,9 @@ import java.util.List;
  * Created by jonathan on 2015-06-22.
  */
 public class GridModel implements Serializable {
+
+    public static final long serialVersionUID = 1L;
+
     private static final char NULL_CHAR = '\u0000';
     private char[][] charCells;
     private int numCols;

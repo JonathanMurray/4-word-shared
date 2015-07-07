@@ -5,6 +5,8 @@ package fourword_shared.messages;
  */
 public class MsgGameIsStarting extends Msg<ServerMsg> {
 
+    public static final long serialVersionUID = 1L;
+
     public int numCols;
     public int numRows;
     public String[] sortedPlayerNames;

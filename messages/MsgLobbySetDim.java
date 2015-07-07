@@ -6,6 +6,8 @@ package fourword_shared.messages;
  */
 public class MsgLobbySetDim extends Msg<ClientMsg>{
 
+    public static final long serialVersionUID = 1L;
+
     public int numCols;
     public int numRows;
 

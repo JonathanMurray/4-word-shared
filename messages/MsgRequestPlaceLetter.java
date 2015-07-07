@@ -4,6 +4,9 @@ package fourword_shared.messages;
  * Created by jonathan on 2015-06-26.
  */
 public class MsgRequestPlaceLetter extends Msg<ServerMsg> {
+
+    public static final long serialVersionUID = 1L;
+
     public char letter;
     public String playerName;
 

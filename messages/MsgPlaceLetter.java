@@ -7,6 +7,8 @@ import fourword_shared.model.Cell;
  */
 public class MsgPlaceLetter extends Msg<ClientMsg> {
 
+    public static final long serialVersionUID = 1L;
+
     public final Cell cell;
 
     public MsgPlaceLetter(Cell cell) {

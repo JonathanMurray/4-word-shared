@@ -5,6 +5,8 @@ package fourword_shared.messages;
  */
 public class MsgText<T extends MsgType> extends Msg{
 
+    public static final long serialVersionUID = 1L;
+
     public final String text;
 
     public MsgText(T type, String text) {

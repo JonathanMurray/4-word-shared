@@ -5,6 +5,8 @@ package fourword_shared.messages;
  */
 public class MsgQuickStartGame extends Msg<ClientMsg>{
 
+    public static final long serialVersionUID = 1L;
+
     final public int numCols;
     final public int numRows;
     final public int numBots;

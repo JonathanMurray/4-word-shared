@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class MsgStringList extends Msg {
 
+    public static final long serialVersionUID = 1L;
+
     public List<String> list;
 
     public MsgStringList(MsgType type, List<String> list) {

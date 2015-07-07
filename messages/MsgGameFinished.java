@@ -6,6 +6,9 @@ import fourword_shared.model.GameResult;
  * Created by jonathan on 2015-06-26.
  */
 public class MsgGameFinished extends Msg<ServerMsg> {
+
+    public static final long serialVersionUID = 1L;
+
     public GameResult result;
 
     public MsgGameFinished( GameResult result) {

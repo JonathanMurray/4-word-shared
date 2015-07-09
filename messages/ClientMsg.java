@@ -19,6 +19,7 @@ public enum ClientMsg implements MsgType {
     LOBBY_SET_DIMENSIONS,
     LEAVE_GAME,
     CONFIRM_GAME_STARTING,
+    REQUEST_ONLINE_PLAYERS_INFO,
 
     QUICK_START_GAME,
 

@@ -3,6 +3,7 @@ package fourword_shared.messages;
 import fourword_shared.model.Cell;
 import fourword_shared.model.GameResult;
 import fourword_shared.model.Lobby;
+import fourword_shared.model.PlayerInfo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -157,6 +158,14 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class RequestOnlinePlayersInfo extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+
+        public RequestOnlinePlayersInfo(){
+            super(ClientMsg.REQUEST_ONLINE_PLAYERS_INFO);
+        }
+    }
+
     public static class RequestPlaceLetter extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
 
@@ -169,6 +178,8 @@ public abstract class Msg<T extends MsgType> implements Serializable{
             this.playerName = playerName;
         }
     }
+
+
 
     public static class RequestPickAndPlaceLetter extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
@@ -284,10 +295,26 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
-    public static class OnlinePlayers extends ListMsg<String, ServerMsg>{
+    public static class PlayerInfoUpdate extends ObjectMsg<PlayerInfo, ServerMsg>{
         public static final long serialVersionUID = 1L;
-        public OnlinePlayers(List<String> onlinePlayers) {
-            super(ServerMsg.ONLINE_PLAYERS, onlinePlayers);
+        public PlayerInfoUpdate(PlayerInfo playerInfo){
+            super(ServerMsg.PLAYER_INFO_UPDATE, playerInfo);
+        }
+    }
+
+    public static class PlayerLoggedOut extends ObjectMsg<String, ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public PlayerLoggedOut(String playerName){
+            super(ServerMsg.PLAYER_LOGGED_OUT, playerName);
+        }
+    }
+
+
+
+    public static class OnlinePlayersInfo extends ListMsg<String, ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public OnlinePlayersInfo(List<String> onlinePlayers) {
+            super(ServerMsg.ONLINE_PLAYERS_INFO, onlinePlayers);
         }
     }
 

@@ -39,6 +39,8 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
     private static class ObjectMsg<Clazz, Type extends MsgType> extends Msg<Type>{
 
+        public static final long serialVersionUID = 1L;
+
         private Clazz o;
 
         public ObjectMsg(Type type, Clazz o) {
@@ -56,6 +58,9 @@ public abstract class Msg<T extends MsgType> implements Serializable{
     }
 
     private static class ListMsg<Clazz, Type extends MsgType> extends Msg<Type>{
+
+        public static final long serialVersionUID = 1L;
+
         private List<Clazz> list;
 
         public ListMsg(Type type, List<Clazz> list){

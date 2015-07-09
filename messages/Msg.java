@@ -170,6 +170,14 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class RequestPickAndPlaceLetter extends Msg<ServerMsg>{
+        public static final long serialVersionUID = 1L;
+
+        public RequestPickAndPlaceLetter() {
+            super(ServerMsg.DO_PICK_AND_PLACE_LETTER);
+        }
+    }
+
     public static class Ok extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
         public Ok() {

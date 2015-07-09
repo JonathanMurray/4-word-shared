@@ -309,11 +309,9 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
-
-
-    public static class OnlinePlayersInfo extends ListMsg<String, ServerMsg>{
+    public static class OnlinePlayersInfo extends ListMsg<PlayerInfo, ServerMsg>{
         public static final long serialVersionUID = 1L;
-        public OnlinePlayersInfo(List<String> onlinePlayers) {
+        public OnlinePlayersInfo(List<PlayerInfo> onlinePlayers) {
             super(ServerMsg.ONLINE_PLAYERS_INFO, onlinePlayers);
         }
     }

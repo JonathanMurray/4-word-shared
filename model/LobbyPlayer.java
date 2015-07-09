@@ -1,5 +1,7 @@
 package fourword_shared.model;
 
+import controllers.UserId;
+
 import java.io.Serializable;
 
 /**
@@ -20,15 +22,15 @@ public class LobbyPlayer implements Serializable, Cloneable {
     }
 
     public static LobbyPlayer connectedHuman(String name){
-        return new LobbyPlayer(name, true, true);
+        return new LobbyPlayer( name, true, true);
     }
 
-    public static LobbyPlayer pendingHuman(String name){
-        return new LobbyPlayer(name, true, false);
+    public static LobbyPlayer pendingHuman( String name){
+        return new LobbyPlayer( name, true, false);
     }
 
     public static LobbyPlayer bot(String name){
-        return new LobbyPlayer(name, false, true);
+        return new LobbyPlayer( name, false, true);
     }
 
     public String toString(){

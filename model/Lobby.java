@@ -1,5 +1,7 @@
 package fourword_shared.model;
 
+import controllers.UserId;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,16 +14,16 @@ public class Lobby implements Serializable{
 
     public static final long serialVersionUID = 1L;
 
-    private String hostingPlayer;
+    private String hostName;
     private HashMap<String, LobbyPlayer> players = new HashMap();
     private ArrayList<String> sortedNames = new ArrayList();
     public int numCols = 4;
     public int numRows = 4;
 
-    public Lobby(String hostingPlayer){
-        this.hostingPlayer = hostingPlayer;
-        players.put(hostingPlayer, LobbyPlayer.connectedHuman(hostingPlayer));
-        sortedNames.add(hostingPlayer);
+    public Lobby( String hostName){
+        this.hostName = hostName;
+        players.put(hostName, LobbyPlayer.connectedHuman(hostName));
+        sortedNames.add(hostName);
     }
 
     public void addPlayer(LobbyPlayer player){
@@ -58,17 +60,19 @@ public class Lobby implements Serializable{
         return humans;
     }
 
+    public boolean containsPlayer(String name){
+        return sortedNames.contains(name);
+    }
 
-
-    public void setNewHost(String host){
-        if(!sortedNames.contains(host)){
-            throw new IllegalArgumentException("host " + host + " is not in lobby: " + sortedNames);
+    public void setNewHost( String hostName){
+        if(!sortedNames.contains(hostName)){
+            throw new IllegalArgumentException("host " + hostName + " is not in lobby: " + sortedNames);
         }
-        hostingPlayer = host;
+        this.hostName = hostName;
     }
 
     public String getHost(){
-        return hostingPlayer;
+        return hostName;
     }
 
     public int size(){
@@ -105,7 +109,7 @@ public class Lobby implements Serializable{
             playersCopy.put(k, players.get(k).getCopy());
         }
         ArrayList<String> sortedNamesCopy = new ArrayList(sortedNames);
-        Lobby copy = new Lobby(hostingPlayer);
+        Lobby copy = new Lobby( hostName);
         copy.sortedNames = sortedNamesCopy;
         copy.players = playersCopy;
         copy.numCols = numCols;
@@ -114,6 +118,6 @@ public class Lobby implements Serializable{
     }
 
     public String toString(){
-        return "Lobby({" + numCols + "," + numRows + "}, " + hostingPlayer + ", " + players + ", " + sortedNames + ")";
+        return "Lobby({" + numCols + "," + numRows + "}, " + hostName + ", " + players + ", " + sortedNames + ")";
     }
 }

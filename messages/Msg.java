@@ -1,11 +1,11 @@
 package fourword_shared.messages;
 
-import controllers.Server;
 import fourword_shared.model.Cell;
 import fourword_shared.model.GameResult;
 import fourword_shared.model.Lobby;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by jonathan on 2015-06-23.
@@ -37,12 +37,13 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         return type.toString();
     }
 
-    public static class ObjectMsg<Clazz, Type extends MsgType> extends Msg<Type>{
+    private static class ObjectMsg<Clazz, Type extends MsgType> extends Msg<Type>{
 
         private Clazz o;
 
-        public ObjectMsg(Type type, Object o) {
+        public ObjectMsg(Type type, Clazz o) {
             super(type);
+            this.o = o;
         }
 
         public Clazz get(){
@@ -51,6 +52,23 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
         public String toString(){
             return type() + "(" + o + ")";
+        }
+    }
+
+    private static class ListMsg<Clazz, Type extends MsgType> extends Msg<Type>{
+        private List<Clazz> list;
+
+        public ListMsg(Type type, List<Clazz> list){
+            super(type);
+            this.list = list;
+        }
+
+        public List<Clazz> get(){
+            return list;
+        }
+
+        public String toString(){
+            return type() + list.toString();
         }
     }
 
@@ -196,4 +214,81 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class LeaveLobby extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public LeaveLobby(){
+            super(ClientMsg.LEAVE_LOBBY);
+        }
+    }
+
+    public static class InviteToLobby extends ObjectMsg<String, ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public InviteToLobby(String invitedName){
+            super(ClientMsg.INVITE_TO_LOBBY, invitedName);
+        }
+    }
+
+    public static class AddBot extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public AddBot(){
+            super(ClientMsg.ADD_BOT_TO_LOBBY);
+        }
+    }
+
+    public static class StartGameFromlobby extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public StartGameFromlobby(){
+            super(ClientMsg.START_GAME_FROM_LOBBY);
+        }
+    }
+
+    public static class LogOut extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public LogOut(){
+            super(ClientMsg.LOGOUT);
+        }
+    }
+
+    public static class CreateLobby extends Msg<ClientMsg> {
+        public static final long serialVersionUID = 1L;
+
+        public CreateLobby() {
+            super(ClientMsg.CREATE_LOBBY);
+        }
+    }
+
+    public static class PlayerDoneThinking extends ObjectMsg<String, ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public PlayerDoneThinking(String playerName) {
+            super(ServerMsg.GAME_PLAYER_DONE_THINKING, playerName);
+        }
+    }
+
+    public static class PlayersTurn extends ObjectMsg<String, ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public PlayersTurn(String playerName) {
+            super(ServerMsg.GAME_PLAYERS_TURN, playerName);
+        }
+    }
+
+    public static class OnlinePlayers extends ListMsg<String, ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public OnlinePlayers(List<String> onlinePlayers) {
+            super(ServerMsg.ONLINE_PLAYERS, onlinePlayers);
+        }
+    }
+
+    public static class AcceptInvite extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public AcceptInvite(){
+            super(ClientMsg.ACCEPT_INVITE);
+        }
+    }
+
+    public static class DeclineInvite extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public DeclineInvite(){
+            super(ClientMsg.DECLINE_INVITE);
+        }
+    }
 }

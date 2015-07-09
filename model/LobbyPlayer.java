@@ -1,7 +1,5 @@
 package fourword_shared.model;
 
-import controllers.UserId;
-
 import java.io.Serializable;
 
 /**

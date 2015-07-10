@@ -157,12 +157,14 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
         final public int numCols;
         final public int numRows;
+        final public int timePerRound;
         final public int numBots;
 
-        public QuickStartGame(int numCols, int numRows, int numBots) {
+        public QuickStartGame(int numCols, int numRows, int timePerRound, int numBots) {
             super(ClientMsg.QUICK_START_GAME);
             this.numCols = numCols;
             this.numRows = numRows;
+            this.timePerRound = timePerRound;
             this.numBots = numBots;
         }
     }

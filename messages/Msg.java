@@ -112,6 +112,13 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class LobbySetTimeLimit extends ObjectMsg<Integer, ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public LobbySetTimeLimit(int secsPerTurn){
+            super(ClientMsg.LOBBY_SET_TIME_LIMIT, secsPerTurn);
+        }
+    }
+
     public static class LobbyState extends ObjectMsg<Lobby, ServerMsg>{
         public static final long serialVersionUID = 1L;
         public LobbyState(Lobby lobby) {

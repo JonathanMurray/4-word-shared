@@ -18,6 +18,7 @@ public class Lobby implements Serializable{
     private ArrayList<String> sortedNames = new ArrayList();
     public int numCols = 4;
     public int numRows = 4;
+    public int timeLimit = 0;
 
     public Lobby( String hostName){
         this.hostName = hostName;
@@ -113,10 +114,11 @@ public class Lobby implements Serializable{
         copy.players = playersCopy;
         copy.numCols = numCols;
         copy.numRows = numRows;
+        copy.timeLimit = timeLimit;
         return copy;
     }
 
     public String toString(){
-        return "Lobby({" + numCols + "," + numRows + "}, " + hostName + ", " + players + ", " + sortedNames + ")";
+        return "Lobby({" + numCols + "," + numRows + ", " + timeLimit + "s/turn}, " + hostName + ", " + players + ", " + sortedNames + ")";
     }
 }

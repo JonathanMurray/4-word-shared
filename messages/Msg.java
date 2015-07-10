@@ -87,13 +87,15 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
     public static class GameIsStarting extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
-        public int numCols;
-        public int numRows;
-        public String[] sortedPlayerNames;
-        public GameIsStarting(int numCols, int numRows, String[] sortedPlayerNames) {
+        public final int numCols;
+        public final int numRows;
+        public final int timePerTurn;
+        public final String[] sortedPlayerNames;
+        public GameIsStarting(int numCols, int numRows, int timePerTurn, String[] sortedPlayerNames) {
             super(ServerMsg.GAME_IS_STARTING);
             this.numCols = numCols;
             this.numRows = numRows;
+            this.timePerTurn = timePerTurn;
             this.sortedPlayerNames = sortedPlayerNames;
         }
     }

@@ -340,4 +340,13 @@ public abstract class Msg<T extends MsgType> implements Serializable{
             super(ClientMsg.DECLINE_INVITE);
         }
     }
+
+    public static class GameEnded extends Msg<ServerMsg> {
+        public static final long serialVersionUID = 1L;
+        public final String leaverName;
+        public GameEnded(String leaverName) {
+            super(ServerMsg.GAME_ENDED);
+            this.leaverName = leaverName;
+        }
+    }
 }

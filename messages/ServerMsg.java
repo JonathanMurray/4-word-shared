@@ -23,5 +23,6 @@ public enum ServerMsg implements MsgType {
     ONLINE_PLAYERS_INFO,
     PLAYER_INFO_UPDATE,
     PLAYER_LOGGED_OUT,
-    GAME_CRASHED;
+    GAME_CRASHED,
+    GAME_ENDED;
 }

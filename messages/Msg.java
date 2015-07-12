@@ -256,6 +256,13 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class LeaveGame extends Msg<ClientMsg>{
+        public static final long serialVersionUID = 1L;
+        public LeaveGame(){
+            super(ClientMsg.LEAVE_GAME);
+        }
+    }
+
     public static class InviteToLobby extends ObjectMsg<String, ClientMsg>{
         public static final long serialVersionUID = 1L;
         public InviteToLobby(String invitedName){

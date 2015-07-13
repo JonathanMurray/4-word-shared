@@ -35,4 +35,21 @@ public class PlayerInfo implements Serializable {
     public static PlayerInfo inGame(String name, int numOthersInGame){
         return new PlayerInfo(name, false, 0, false, true, numOthersInGame);
     }
+
+    public String toString(){
+        String infoText = "";
+        if(isInGame){
+            infoText += "in game with " + numOthersInGame + " other(s)";
+        }else if(isInLobby){
+            if(isLobbyHost){
+                infoText += "hosting lobby for ";
+            }else{
+                infoText += "in lobby with ";
+            }
+            infoText += numOthersInLobby + " other(s)";
+        }else{
+            infoText += "in menu";
+        }
+        return infoText;
+    }
 }

@@ -3,6 +3,7 @@ package fourword_shared.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by jonathan on 2015-06-22.
@@ -22,6 +23,17 @@ public class GridModel implements Serializable {
         this.numRows = numRows;
     }
 
+    public Cell getRandomFreeCell(){
+        List<Cell> freeCells = new ArrayList<Cell>();
+        for(int x = 0; x < numCols; x ++){
+            for(int y = 0; y < numRows; y ++){
+                if(charCells[x][y] == NULL_CHAR){
+                    freeCells.add(new Cell(x, y));
+                }
+            }
+        }
+        return freeCells.get(new Random().nextInt(freeCells.size()));
+    }
 
     public void setCharAtCell(char ch, Cell cell){
         assertIsLetter(ch);

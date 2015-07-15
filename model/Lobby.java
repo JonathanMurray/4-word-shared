@@ -19,6 +19,8 @@ public class Lobby implements Serializable{
     public int numCols = 4;
     public int numRows = 4;
     public int timeLimit = 0;
+    public boolean useCustomRules = false;
+    public boolean preplacedRandomLetters = false;
 
     public Lobby( String hostName){
         this.hostName = hostName;

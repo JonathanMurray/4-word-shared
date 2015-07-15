@@ -7,6 +7,7 @@ public enum ServerMsg implements MsgType {
     OK,
     NO,
 
+    LOBBY_SET_VAR,
 
     DO_PLACE_LETTER,
     DO_PICK_AND_PLACE_LETTER,
@@ -24,5 +25,5 @@ public enum ServerMsg implements MsgType {
     PLAYER_INFO_UPDATE,
     PLAYER_LOGGED_OUT,
     GAME_CRASHED,
-    GAME_ENDED;
+    GAME_ENDED, LOBBY_STATE_CHANGE;
 }

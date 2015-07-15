@@ -101,26 +101,50 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
-    public static class LobbySetDim extends Msg<ClientMsg>{
+    public static class LobbySetVar<T extends MsgType> extends Msg<T>{
         public static final long serialVersionUID = 1L;
-        public int numCols;
-        public int numRows;
-        public LobbySetDim(int numCols, int numRows){
-            super(ClientMsg.LOBBY_SET_DIMENSIONS);
-            this.numCols = numCols;
-            this.numRows = numRows;
+        public final Var var;
+        public final Serializable value;
+
+        private LobbySetVar(T type, Var var, Serializable value) {
+            super(type);
+            this.var = var;
+            this.value = value;
         }
-        public String toString(){
-            return "MsgLobbySetDim(" + numCols + ", " + numRows + ")";
+
+        public static LobbySetVar<ServerMsg> serverMsg(Var var, Serializable value){
+            return new LobbySetVar(ServerMsg.LOBBY_SET_VAR, var, value);
+        }
+
+        public static LobbySetVar<ClientMsg> clientMsg(Var var, Serializable value){
+            return new LobbySetVar(ServerMsg.LOBBY_SET_VAR, var, value);
+        }
+
+        public static enum Var{
+            ROWS, COLS, TIME_PER_TURN, CUSTOM_RULES, PREPLACED_RANDOM;
         }
     }
 
-    public static class LobbySetTimeLimit extends ObjectMsg<Integer, ClientMsg>{
-        public static final long serialVersionUID = 1L;
-        public LobbySetTimeLimit(int secsPerTurn){
-            super(ClientMsg.LOBBY_SET_TIME_LIMIT, secsPerTurn);
-        }
-    }
+//    public static class LobbySetDim extends Msg<ClientMsg>{
+//        public static final long serialVersionUID = 1L;
+//        public int numCols;
+//        public int numRows;
+//        public LobbySetDim(int numCols, int numRows){
+//            super(ClientMsg.LOBBY_SET_DIMENSIONS);
+//            this.numCols = numCols;
+//            this.numRows = numRows;
+//        }
+//        public String toString(){
+//            return "MsgLobbySetDim(" + numCols + ", " + numRows + ")";
+//        }
+//    }
+
+//    public static class LobbySetTimeLimit extends ObjectMsg<Integer, ClientMsg>{
+//        public static final long serialVersionUID = 1L;
+//        public LobbySetTimeLimit(int secsPerTurn){
+//            super(ClientMsg.LOBBY_SET_TIME_LIMIT, secsPerTurn);
+//        }
+//    }
 
     public static class LobbyState extends ObjectMsg<Lobby, ServerMsg>{
         public static final long serialVersionUID = 1L;
@@ -128,6 +152,24 @@ public abstract class Msg<T extends MsgType> implements Serializable{
             super(ServerMsg.LOBBY_STATE, lobby);
         }
     }
+
+    public static class LobbyStateChange extends Msg<ServerMsg>{
+        public static final long serialVersionUID = 1L;
+
+        public LobbyStateChange(Action action, String playerName) {
+            super(ServerMsg.LOBBY_STATE_CHANGE);
+            this.action = action;
+            this.playerName = playerName;
+        }
+
+        public static enum Action{
+            JOINED, LEFT;
+        }
+        public final Action action;
+        public final String playerName;
+    }
+
+
 
     public static class PickAndPlaceLetter extends Msg<ClientMsg>{
         public static final long serialVersionUID = 1L;
@@ -222,7 +264,7 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
-    public static class YouWereKicked extends Msg{
+    public static class YouWereKicked extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
         public YouWereKicked(){
             super(ServerMsg.YOU_WERE_KICKED);

@@ -36,7 +36,7 @@ public class PlayerInfo implements Serializable {
         return new PlayerInfo(name, false, 0, false, true, numOthersInGame);
     }
 
-    public String toString(){
+    public String infoString(){
         String infoText = "";
         if(isInGame){
             infoText += "in game with " + numOthersInGame + " other(s)";
@@ -51,5 +51,9 @@ public class PlayerInfo implements Serializable {
             infoText += "in menu";
         }
         return infoText;
+    }
+
+    public String toString(){
+        return infoString();
     }
 }

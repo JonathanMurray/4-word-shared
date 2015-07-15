@@ -1,5 +1,6 @@
 package fourword_shared.messages;
 
+import controllers.Server;
 import fourword_shared.model.Cell;
 import fourword_shared.model.GameResult;
 import fourword_shared.model.Lobby;
@@ -354,6 +355,14 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         public GameEnded(String leaverName) {
             super(ServerMsg.GAME_ENDED);
             this.leaverName = leaverName;
+
+        }
+    }
+
+    public static class GameCrashed extends Msg<ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public GameCrashed(){
+            super(ServerMsg.GAME_CRASHED);
         }
     }
 }

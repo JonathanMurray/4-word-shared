@@ -48,4 +48,14 @@ public class ScoreCalculator {
         return score;
     }
 
+    public List<String> extractLowerWords(GridModel grid){
+        List<String> lowerWords = new ArrayList<String>();
+        for(String col : grid.getCols()){
+            lowerWords.addAll(extractLowerWords(col));
+        }for(String row : grid.getRows()){
+            lowerWords.addAll(extractLowerWords(row));
+        }
+        return lowerWords;
+    }
+
 }

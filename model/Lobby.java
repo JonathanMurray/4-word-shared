@@ -1,7 +1,6 @@
 package fourword_shared.model;
 
 
-import io.netty.util.Attribute;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,79 +12,21 @@ import java.util.List;
  */
 public class Lobby implements Serializable{
 
-//    public static final AttributeName<Integer> ROWS = new AttributeName();
-//    public static final AttributeName<Integer> COLS = new AttributeName();
-//    public static final AttributeName<Integer> TIME_PER_TURN = new AttributeName();
-//    public static final AttributeName<Boolean> CUSTOM_RULES = new AttributeName();
-//    public static final AttributeName<Boolean> PREPLACED_RANDOM = new AttributeName();
-
-    public interface Attribute{}
-
-    public enum IntAttribute implements Attribute{
-        ROWS, COLS, TIME_PER_TURN;
-    }
-
-    public enum BoolAttribute implements Attribute{
-        CUSTOM_RULES, PREPLACED_RANDOM;
-    }
-
-    private HashMap<IntAttribute, Integer> intAttributes = new HashMap<IntAttribute, Integer>();
-    private HashMap<BoolAttribute, Boolean> boolAttributes = new HashMap<BoolAttribute, Boolean>();
-
-
     public static final long serialVersionUID = 1L;
 
     private String hostName;
     private HashMap<String, LobbyPlayer> players = new HashMap();
     private ArrayList<String> sortedNames = new ArrayList();
-//    public int numCols = 4;
-//    public int numRows = 4;
-//    public int timeLimit = 0;
-//    public boolean useCustomRules = false;
-//    public boolean preplacedRandomLetters = false;
-//    private HashMap<AttributeName, Attribute> attributes;
-
-
+    private GameSettings gameSettings = new GameSettings();
 
     public Lobby( String hostName){
         this.hostName = hostName;
         players.put(hostName, LobbyPlayer.connectedHuman(hostName));
         sortedNames.add(hostName);
-        setupAttributes();
     }
 
-    private void setupAttributes(){
-        intAttributes.put(IntAttribute.COLS, 0);
-        intAttributes.put(IntAttribute.ROWS, 0);
-        intAttributes.put(IntAttribute.TIME_PER_TURN, 0);
-        boolAttributes.put(BoolAttribute.CUSTOM_RULES, false);
-        boolAttributes.put(BoolAttribute.PREPLACED_RANDOM, false);
-    }
-
-    public <T> void setAttribute(Attribute attribute, T value){
-        if(attribute instanceof IntAttribute){
-            intAttributes.put((IntAttribute)attribute, (Integer)value);
-        }else if(attribute instanceof BoolAttribute){
-            boolAttributes.put((BoolAttribute)attribute, (Boolean)value);
-        }else{
-            throw new IllegalArgumentException("attr: " + attribute + ", value: " + value);
-        }
-    }
-
-    public int getInt(IntAttribute attribute){
-        return intAttributes.get(attribute);
-    }
-
-    public void setInt(IntAttribute attribute, int value){
-        intAttributes.put(attribute, value);
-    }
-
-    public boolean getBool(BoolAttribute attribute){
-        return boolAttributes.get(attribute);
-    }
-
-    public void setBool(BoolAttribute attribute, boolean value){
-        boolAttributes.put(attribute, value);
+    public GameSettings getSettings(){
+        return gameSettings;
     }
 
     public void addPlayer(LobbyPlayer player){
@@ -174,8 +115,7 @@ public class Lobby implements Serializable{
         Lobby copy = new Lobby( hostName);
         copy.sortedNames = sortedNamesCopy;
         copy.players = playersCopy;
-        copy.intAttributes = intAttributes;
-        copy.boolAttributes = boolAttributes;
+        copy.gameSettings = gameSettings.copy();
 //        copy.numCols = numCols;
 //        copy.numRows = numRows;
 //        copy.timeLimit = timeLimit;
@@ -183,6 +123,6 @@ public class Lobby implements Serializable{
     }
 
     public String toString(){
-        return "Lobby({" + intAttributes + ", " + boolAttributes + "}, " + hostName + ", " + players + ", " + sortedNames + ")";
+        return "Lobby({" + gameSettings + "}, " + hostName + ", " + players + ", " + sortedNames + ")";
     }
 }

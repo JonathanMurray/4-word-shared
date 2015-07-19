@@ -1,10 +1,7 @@
 package fourword_shared.messages;
 
 import controllers.Server;
-import fourword_shared.model.Cell;
-import fourword_shared.model.GameResult;
-import fourword_shared.model.Lobby;
-import fourword_shared.model.PlayerInfo;
+import fourword_shared.model.*;
 
 import java.io.Serializable;
 import java.util.List;
@@ -88,35 +85,31 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
     public static class GameIsStarting extends Msg<ServerMsg>{
         public static final long serialVersionUID = 1L;
-        public final int numCols;
-        public final int numRows;
-        public final int timePerTurn;
+        public final GameSettings settings;
         public final String[] sortedPlayerNames;
-        public GameIsStarting(int numCols, int numRows, int timePerTurn, String[] sortedPlayerNames) {
+        public GameIsStarting(GameSettings settings, String[] sortedPlayerNames) {
             super(ServerMsg.GAME_IS_STARTING);
-            this.numCols = numCols;
-            this.numRows = numRows;
-            this.timePerTurn = timePerTurn;
+            this.settings = settings;
             this.sortedPlayerNames = sortedPlayerNames;
         }
     }
 
     public static class LobbySetAttribute<T extends MsgType> extends Msg<T>{
         public static final long serialVersionUID = 1L;
-        public final Lobby.Attribute attribute;
+        public final GameSettings.Attribute attribute;
         public final Serializable value;
 
-        private LobbySetAttribute(T type, Lobby.Attribute attribute, Serializable value) {
+        private LobbySetAttribute(T type, GameSettings.Attribute attribute, Serializable value) {
             super(type);
             this.attribute = attribute;
             this.value = value;
         }
 
-        public static LobbySetAttribute<ServerMsg> serverMsg(Lobby.Attribute attribute, Serializable value){
+        public static LobbySetAttribute<ServerMsg> serverMsg(GameSettings.Attribute attribute, Serializable value){
             return new LobbySetAttribute(ServerMsg.LOBBY_SET_VAR, attribute, value);
         }
 
-        public static LobbySetAttribute<ClientMsg> clientMsg(Lobby.Attribute attribute, Serializable value){
+        public static LobbySetAttribute<ClientMsg> clientMsg(GameSettings.Attribute attribute, Serializable value){
             return new LobbySetAttribute(ClientMsg.LOBBY_SET_VAR, attribute, value);
         }
 
@@ -195,17 +188,12 @@ public abstract class Msg<T extends MsgType> implements Serializable{
 
     public static class QuickStartGame extends Msg<ClientMsg>{
         public static final long serialVersionUID = 1L;
-
-        final public int numCols;
-        final public int numRows;
-        final public int timePerRound;
+        final public GameSettings gameSettings;
         final public int numBots;
 
-        public QuickStartGame(int numCols, int numRows, int timePerRound, int numBots) {
+        public QuickStartGame(GameSettings gameSettings, int numBots) {
             super(ClientMsg.QUICK_START_GAME);
-            this.numCols = numCols;
-            this.numRows = numRows;
-            this.timePerRound = timePerRound;
+            this.gameSettings = gameSettings;
             this.numBots = numBots;
         }
     }

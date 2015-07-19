@@ -25,5 +25,7 @@ public enum ServerMsg implements MsgType {
     PLAYER_INFO_UPDATE,
     PLAYER_LOGGED_OUT,
     GAME_CRASHED,
-    GAME_ENDED, LOBBY_STATE_CHANGE;
+    GAME_ENDED,
+    LOBBY_STATE_CHANGE,
+    SET_LETTER_AT_CELL;
 }

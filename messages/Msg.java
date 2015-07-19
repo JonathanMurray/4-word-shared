@@ -93,6 +93,18 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class SetLetterAtCell extends Msg<ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public final Cell cell;
+        public final char letter;
+
+        public SetLetterAtCell(Cell cell, char letter) {
+            super(ServerMsg.SET_LETTER_AT_CELL);
+            this.cell = cell;
+            this.letter = letter;
+        }
+    }
+
     public static class LobbySetAttribute<T extends MsgType> extends Msg<T>{
         public static final long serialVersionUID = 1L;
         public final GameSettings.Attribute attribute;

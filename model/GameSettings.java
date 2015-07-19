@@ -1,13 +1,34 @@
 package fourword_shared.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by jonathan on 2015-07-19.
  */
 public class GameSettings implements Cloneable, Serializable{
     public static final long serialVersionUID = 1L;
+
+    public static class Entry<T>{
+        public final Attribute attribute;
+        public final T value;
+
+        public Entry(Attribute attribute, T value) {
+            this.attribute = attribute;
+            this.value = value;
+        }
+    }
+
+    public Collection<Entry> getAllEntries(){
+        List<Entry> entries = new ArrayList<Entry>();
+        for(IntAttribute intAttribute : IntAttribute.values()){
+            entries.add(new Entry<Integer>(intAttribute, intAttributes.get(intAttribute)));
+        }
+        return entries;
+    }
 
     public GameSettings(){
         setupAttributes();
@@ -27,8 +48,8 @@ public class GameSettings implements Cloneable, Serializable{
     private HashMap<BoolAttribute, Boolean> boolAttributes = new HashMap<BoolAttribute, Boolean>();
 
     private void setupAttributes(){
-        intAttributes.put(IntAttribute.COLS, 0);
-        intAttributes.put(IntAttribute.ROWS, 0);
+        intAttributes.put(IntAttribute.COLS, 4);
+        intAttributes.put(IntAttribute.ROWS, 4);
         intAttributes.put(IntAttribute.TIME_PER_TURN, 0);
         boolAttributes.put(BoolAttribute.CUSTOM_RULES, false);
         boolAttributes.put(BoolAttribute.PREPLACED_RANDOM, false);
@@ -43,6 +64,8 @@ public class GameSettings implements Cloneable, Serializable{
             throw new IllegalArgumentException("attr: " + attribute + ", value: " + value);
         }
     }
+
+
 
     public int getInt(IntAttribute attribute){
         return intAttributes.get(attribute);

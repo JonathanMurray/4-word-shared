@@ -1,6 +1,5 @@
 package fourword_shared.messages;
 
-import controllers.Server;
 import fourword_shared.model.*;
 
 import java.io.Serializable;

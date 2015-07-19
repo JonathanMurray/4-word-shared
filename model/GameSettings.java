@@ -1,11 +1,13 @@
 package fourword_shared.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * Created by jonathan on 2015-07-19.
  */
-public class GameSettings implements Cloneable{
+public class GameSettings implements Cloneable, Serializable{
+    public static final long serialVersionUID = 1L;
 
     public GameSettings(){
         setupAttributes();

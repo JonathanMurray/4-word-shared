@@ -54,6 +54,10 @@ public class GridModel implements Serializable {
         return charCells[cell.x()][cell.y()];
     }
 
+    public char getCharAtCell(int x, int y){
+        return charCells[x][y];
+    }
+
     public boolean hasCharAtCell(Cell cell){
         return getCharAtCell(cell) != NULL_CHAR;
     }

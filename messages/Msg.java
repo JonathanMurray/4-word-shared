@@ -101,28 +101,26 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
-    public static class LobbySetVar<T extends MsgType> extends Msg<T>{
+    public static class LobbySetAttribute<T extends MsgType> extends Msg<T>{
         public static final long serialVersionUID = 1L;
-        public final Var var;
+        public final Lobby.Attribute attribute;
         public final Serializable value;
 
-        private LobbySetVar(T type, Var var, Serializable value) {
+        private LobbySetAttribute(T type, Lobby.Attribute attribute, Serializable value) {
             super(type);
-            this.var = var;
+            this.attribute = attribute;
             this.value = value;
         }
 
-        public static LobbySetVar<ServerMsg> serverMsg(Var var, Serializable value){
-            return new LobbySetVar(ServerMsg.LOBBY_SET_VAR, var, value);
+        public static LobbySetAttribute<ServerMsg> serverMsg(Lobby.Attribute attribute, Serializable value){
+            return new LobbySetAttribute(ServerMsg.LOBBY_SET_VAR, attribute, value);
         }
 
-        public static LobbySetVar<ClientMsg> clientMsg(Var var, Serializable value){
-            return new LobbySetVar(ServerMsg.LOBBY_SET_VAR, var, value);
+        public static LobbySetAttribute<ClientMsg> clientMsg(Lobby.Attribute attribute, Serializable value){
+            return new LobbySetAttribute(ClientMsg.LOBBY_SET_VAR, attribute, value);
         }
 
-        public static enum Var{
-            ROWS, COLS, TIME_PER_TURN, CUSTOM_RULES, PREPLACED_RANDOM;
-        }
+
     }
 
 //    public static class LobbySetDim extends Msg<ClientMsg>{

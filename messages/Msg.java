@@ -173,6 +173,10 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
         public final Action action;
         public final String playerName;
+
+        public String toString(){
+            return "LobbyChange(" + playerName + " " + action + ")";
+        }
     }
 
 

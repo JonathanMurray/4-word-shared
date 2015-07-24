@@ -27,6 +27,9 @@ public class GameSettings implements Cloneable, Serializable{
         for(IntAttribute intAttribute : IntAttribute.values()){
             entries.add(new Entry<Integer>(intAttribute, intAttributes.get(intAttribute)));
         }
+        for(BoolAttribute boolAttribute : BoolAttribute.values()){
+            entries.add(new Entry<Boolean>(boolAttribute, boolAttributes.get(boolAttribute)));
+        }
         return entries;
     }
 

@@ -169,7 +169,7 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
 
         public enum Action{
-            INVITED, JOINED, LEFT, NEW_HOST;
+            INVITED, ACCEPTED_INVITE, BOT_ADDED, LEFT, NEW_HOST;
         }
         public final Action action;
         public final String playerName;

@@ -117,11 +117,15 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
 
         public static LobbySetAttribute<ServerMsg> serverMsg(GameSettings.Attribute attribute, Serializable value){
-            return new LobbySetAttribute(ServerMsg.LOBBY_SET_VAR, attribute, value);
+            return new LobbySetAttribute(ServerMsg.LOBBY_SET_ATTRIBUTE, attribute, value);
         }
 
         public static LobbySetAttribute<ClientMsg> clientMsg(GameSettings.Attribute attribute, Serializable value){
-            return new LobbySetAttribute(ClientMsg.LOBBY_SET_VAR, attribute, value);
+            return new LobbySetAttribute(ClientMsg.LOBBY_SET_ATTRIBUTE, attribute, value);
+        }
+
+        public String toString(){
+            return "SetAttr(" + attribute + " := " + value + ")";
         }
 
 

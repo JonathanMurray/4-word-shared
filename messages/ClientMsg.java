@@ -8,7 +8,7 @@ public enum ClientMsg implements MsgType {
     LOGIN,
     LOGOUT,
 
-    LOBBY_SET_VAR,
+    LOBBY_SET_ATTRIBUTE,
 
     CREATE_LOBBY,
     LEAVE_LOBBY,

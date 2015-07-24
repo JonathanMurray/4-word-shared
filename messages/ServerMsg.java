@@ -7,7 +7,7 @@ public enum ServerMsg implements MsgType {
     OK,
     NO,
 
-    LOBBY_SET_VAR,
+    LOBBY_SET_ATTRIBUTE,
 
     DO_PLACE_LETTER,
     DO_PICK_AND_PLACE_LETTER,

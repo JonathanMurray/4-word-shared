@@ -115,7 +115,7 @@ public class Lobby implements Serializable{
         Lobby copy = new Lobby( hostName);
         copy.sortedNames = sortedNamesCopy;
         copy.players = playersCopy;
-        copy.gameSettings = gameSettings.copy();
+        copy.gameSettings = gameSettings.clone();
 //        copy.numCols = numCols;
 //        copy.numRows = numRows;
 //        copy.timeLimit = timeLimit;

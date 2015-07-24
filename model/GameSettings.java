@@ -83,12 +83,8 @@ public class GameSettings implements Cloneable, Serializable{
         boolAttributes.put(attribute, value);
     }
 
-    public GameSettings copy(){
-        try {
-            return (GameSettings) clone();
-        } catch (CloneNotSupportedException e) {
-            throw new RuntimeException(e);
-        }
+    public GameSettings clone(){
+        return clone();
     }
 
     public String toString(){

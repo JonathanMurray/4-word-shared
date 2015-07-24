@@ -164,8 +164,8 @@ public abstract class Msg<T extends MsgType> implements Serializable{
             this.playerName = playerName;
         }
 
-        public static enum Action{
-            JOINED, LEFT;
+        public enum Action{
+            INVITED, JOINED, LEFT;
         }
         public final Action action;
         public final String playerName;

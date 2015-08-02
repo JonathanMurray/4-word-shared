@@ -14,6 +14,8 @@ public class Lobby implements Serializable{
 
     public static final long serialVersionUID = 1L;
 
+    public static final int MAX_PLAYERS = 4;
+
     private String hostName;
     private HashMap<String, LobbyPlayer> players = new HashMap();
     private ArrayList<String> sortedNames = new ArrayList();

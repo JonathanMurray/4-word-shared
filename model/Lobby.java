@@ -108,6 +108,16 @@ public class Lobby implements Serializable{
         return sortedNames;
     }
 
+    public boolean[] bots(){
+        boolean[] bots = new boolean[players.size()];
+        for(int i = 0; i < players.size(); i++){
+            String name = sortedNames.get(i);
+            boolean isBot = !players.get(name).isHuman;
+            bots[i] = isBot;
+        }
+        return bots;
+    }
+
     public Lobby getCopy(){
         HashMap<String, LobbyPlayer> playersCopy = new HashMap();
         for(String k : players.keySet()){

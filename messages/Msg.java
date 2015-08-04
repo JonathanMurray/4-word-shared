@@ -86,10 +86,12 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         public static final long serialVersionUID = 1L;
         public final GameSettings settings;
         public final String[] sortedPlayerNames;
-        public GameIsStarting(GameSettings settings, String[] sortedPlayerNames) {
+        public final boolean[] bots;
+        public GameIsStarting(GameSettings settings, String[] sortedPlayerNames, boolean[] bots) {
             super(ServerMsg.GAME_IS_STARTING);
             this.settings = settings;
             this.sortedPlayerNames = sortedPlayerNames;
+            this.bots = bots;
         }
     }
 

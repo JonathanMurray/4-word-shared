@@ -39,6 +39,21 @@ public class ScoreCalculator {
         return computeScore(whole, dictionary);
     }
 
+    public int computeScore(GridModel grid){
+        return computeScore(grid, this.dictionary);
+    }
+
+    public static int computeScore(GridModel grid, Dictionary dictionary){
+        int score = 0;
+        for(String col : grid.getCols()){
+            score += computeScore(col, dictionary);
+        }
+        for(String row : grid.getRows()){
+            score += computeScore(row, dictionary);
+        }
+        return score;
+    }
+
     public static int computeScore(String whole, Dictionary dictionary){
         int score = 0;
         List<String> words = extractLowerWords(whole, dictionary);

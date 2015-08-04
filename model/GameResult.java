@@ -11,11 +11,13 @@ public class GameResult implements Serializable{
 
     public static final long serialVersionUID = 1L;
 
-    private HashMap<String, GridModel> grids;
-    private HashSet<String> lowerWords;
+    private final HashMap<String, GridModel> grids;
+    private final HashSet<String> botNames;
+    private final HashSet<String> lowerWords;
 
-    public GameResult(HashMap<String, GridModel> grids, HashSet<String> lowerWords){
+    public GameResult(HashMap<String, GridModel> grids, HashSet<String> botNames, HashSet<String> lowerWords){
         this.grids = grids;
+        this.botNames = botNames;
         this.lowerWords = lowerWords;
     }
 

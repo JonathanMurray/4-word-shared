@@ -10,10 +10,13 @@ public class MockupFactory {
 
     public static GameResult createResult(){
         HashMap<String,GridModel> grids = new HashMap();
+        HashSet<String> botNames = new HashSet<String>();
         grids.put("Johny", createGrid(6,6));
+        botNames.add("Johny");
         grids.put("Sandy", createGrid(6,6));
         HashSet<String> words = createWords();
-        return new GameResult(grids, words);
+
+        return new GameResult(grids, botNames, words);
     }
 
     public static HashSet<String> createWords(){

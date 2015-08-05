@@ -107,6 +107,16 @@ public abstract class Msg<T extends MsgType> implements Serializable{
         }
     }
 
+    public static class SetBonusCell extends Msg<ServerMsg>{
+        public static final long serialVersionUID = 1L;
+        public final Cell cell;
+
+        public SetBonusCell(Cell cell) {
+            super(ServerMsg.SET_BONUS_CELL);
+            this.cell = cell;
+        }
+    }
+
     public static class LobbySetAttribute<T extends MsgType> extends Msg<T>{
         public static final long serialVersionUID = 1L;
         public final GameSettings.Attribute attribute;

@@ -44,7 +44,7 @@ public class GameSettings implements Cloneable, Serializable{
     }
 
     public enum BoolAttribute implements Attribute{
-        CUSTOM_RULES, PREPLACED_RANDOM;
+        CUSTOM_RULES, PREPLACED_RANDOM, BONUS_CELLS;
     }
 
     private HashMap<IntAttribute, Integer> intAttributes = new HashMap<IntAttribute, Integer>();
@@ -56,6 +56,7 @@ public class GameSettings implements Cloneable, Serializable{
         intAttributes.put(IntAttribute.TIME_PER_TURN, 0);
         boolAttributes.put(BoolAttribute.CUSTOM_RULES, false);
         boolAttributes.put(BoolAttribute.PREPLACED_RANDOM, false);
+        boolAttributes.put(BoolAttribute.BONUS_CELLS, false);
     }
 
     public <T> void setAttribute(Attribute attribute, T value){

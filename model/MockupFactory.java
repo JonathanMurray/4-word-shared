@@ -1,7 +1,9 @@
 package fourword_shared.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by jonathan on 2015-06-29.
@@ -15,8 +17,10 @@ public class MockupFactory {
         botNames.add("Johny");
         grids.put("Sandy", createGrid(6,6));
         HashSet<String> words = createWords();
+        List<Cell> bonusCells = new ArrayList<Cell>();
+        bonusCells.add(new Cell(0,0));
 
-        return new GameResult(grids, botNames, words);
+        return new GameResult( grids, botNames, words, bonusCells);
     }
 
     public static HashSet<String> createWords(){

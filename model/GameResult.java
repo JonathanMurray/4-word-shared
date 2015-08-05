@@ -29,6 +29,10 @@ public class GameResult implements Serializable{
         return lowerWords;
     }
 
+    public boolean isBot(String playerName){
+        return botNames.contains(playerName);
+    }
+
     public String toString(){
         return lowerWords.toString();
     }

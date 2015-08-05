@@ -15,11 +15,4 @@ public class Util {
         letter = (char)(letter + offset);
         return letter;
     }
-
-    public static boolean isSmallScreen(Context context){
-        int size = context.getResources().getConfiguration().screenLayout &
-                Configuration.SCREENLAYOUT_SIZE_MASK;
-        return size == Configuration.SCREENLAYOUT_SIZE_SMALL
-                || size == Configuration.SCREENLAYOUT_SIZE_NORMAL;
-    }
 }

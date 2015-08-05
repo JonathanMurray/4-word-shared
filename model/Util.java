@@ -1,8 +1,5 @@
 package fourword_shared.model;
 
-import android.content.Context;
-import android.content.res.Configuration;
-
 import java.util.Random;
 
 /**

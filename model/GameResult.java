@@ -32,8 +32,9 @@ public class GameResult implements Serializable{
     }
 
 
-    public boolean isBot(String playerName){
+    public boolean isBot(String playerName) {
         return botNames.contains(playerName);
+    }
 
     public List<Cell> bonusCells(){
         return bonusCells;
